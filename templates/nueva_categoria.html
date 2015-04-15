@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+{% block titulo %}
+<title>El titulo :D</title>
+<link rel="stylesheet" type="text/css" href="static/tcal.css" >
+<script type="text/javascript" src="static/tcal.js"></script>
+{% endblock %}
+
+{% block encabezado %}
+El encabezado
+{% endblock %}
+
+{% block body %}
+<h3>¿Que tienes que pagar?</h3>
+<form action"" method= "post">
+  Nombre
+  <input type"text" name="nombre">
+  <br>Repetir
+  <select name="tipo">
+    <option>Una sola vez</option>
+    <option>Mensual</option>
+    <option>Anual</option>
+    <option>Semanal</option>
+    <option>Diario</option>
+  </select>
+  <br>Empezar el dia
+  <input type="text" name="fecha" class="tcal" value="" />
+  <br>¿Cuanto tienes que pagar por cada vez?
+  <input type="text" name="a_pagar">
+  <input type="submit">
+</form>
+
+{% endblock %}

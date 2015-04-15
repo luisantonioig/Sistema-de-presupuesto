@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    {% block titulo %}{% endblock %}
+    <link rel="shortcut icon" href="/static/favicon.ico">
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='estilo.css') }}">
+  </head>
+  <body>
+    <div id="agrupar">
+      <header id="cabecera">{% block encabezado %}{% endblock %}</header>
+      <section id="contenido">{% block body %} {% endblock %}</section>
+      <footer id="pie">Esto es el pie de la página</footer>
+    </div>
+  </body> 
+
+</html>

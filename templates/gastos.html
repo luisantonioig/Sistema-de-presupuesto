@@ -1,0 +1,13 @@
+{% extends "gastar.html" %}
+{% block titulo %}
+<title>Tus gastos</title>
+{% endblock %}
+{% block encabezado %}
+Tus gastos
+{% endblock %}
+
+{% block gastos %}
+    {% for dato in datos %}
+    <h3>{{dato[1]}}: {{dato[0]}}</h3>
+    {% endfor %}
+{% endblock %}

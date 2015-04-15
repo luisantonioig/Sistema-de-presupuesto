@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block titulo %}
+<title>Tu presupuesto</title>
+{% endblock %}
+
+{% block encabezado %}
+  <h2 class="mensajeCabecera">
+  Reporte de: {{usuario}}
+  </h2>
+  {% endblock %}
+  
+  {% block body %}
+  <h2>Presupuestos de usuario</h2>
+    {% for dato in datos %}
+    <div class= "presupuestos">
+    <h3>Para {{dato[0]}} cuentas con ${{dato[1]}} pesos</h3>
+    <input type="submit" value="Modificar">
+    <input type="submit" value="Eliminar">
+  </div>
+  {% endfor %}
+{% endblock %}

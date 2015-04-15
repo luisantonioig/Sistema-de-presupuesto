@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block titulo %}
+<title>Gastar</title>
+{% endblock %}
+
+{% block encabezado %}
+¿Cuando gastaste?
+{% endblock %}
+
+{% block body %}
+<h3>¿En cuál categoria gastaste?</h3>
+<form action="/gastar" method=post>
+  <select name="categorias">
+    {% for categoria in categorias %}
+    <option>{{categoria}}</option>
+    {% endfor %}
+  </select>
+  <br><br>¿Cuánto gastaste?
+  <input name="gasto" type"text" text="">
+</form>
+{% if mensaje != None %}
+<h4>
+{{mensaje}}
+</h4>
+{% endif %}
+{% block gastos %}
+{% endblock %}
+{% endblock %}
