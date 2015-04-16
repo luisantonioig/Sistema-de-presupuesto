@@ -55,8 +55,21 @@ def presupuesto():
   return render_template('presupuestos.html', presupuestos=presupuestos,datos=datos,usuario='Antonio :D')
 
 
-@app.route('/gastos/<numero>')
+@app.route('/gastos/<numero>',methods=['POST','GET'])
 def gastos(numero):
+  mensaje = None
+  print 'Mensaje es None'
+  if request.method== 'POST':
+    print 'Mensaje despues de post'
+    gasto = -1
+    try:
+      gasto= int(request.form['gasto'])
+      mensaje = 'Gastaste {0} en {1}'.format(str(gasto),request.form['categorias'])
+      r.lpush('gastos:%s'%request.form['categorias'],gasto)
+      print 'se guardo correctamente'
+      return redirect(url_for('gastos',numero=3))
+    except ValueError:
+      mensaje = 'No puedes gastar %s' %request.form['gasto']
   categorias = r.lrange('categoria',0,-1)
   gastos1 = []
   cat = []
@@ -81,10 +94,11 @@ def gastar():
     gasto = -1
     try:
       gasto= int(request.form['gasto'])
+      print 'paso el gasto =  sabe que'
       mensaje = 'Gastaste {0} en {1}'.format(str(gasto),request.form['categorias'])
       r.lpush('gastos:%s'%request.form['categorias'],gasto)
       print 'se guardo correctamente'
-      redirect_URL('/gastos/4')
+      return redirect(url_for('gastos',numero=3))
     except ValueError:
       mensaje = 'No puedes gastar %s' %request.form['gasto']
   categorias = r.lrange('categoria',0,-1)
