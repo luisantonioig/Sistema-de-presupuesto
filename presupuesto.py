@@ -6,7 +6,6 @@ import os
 app = Flask(__name__)
 r = Redis(app)
 
-# url='redis://:password@localhost:6379/2'
 @app.route('/',methods=['POST','GET'])
 def index():
   nombre = 'sin nombre'
