@@ -12,6 +12,8 @@
   
   {% block body %}
   <h2>Presupuestos de usuario</h2>
+    {% block presupuestar %}
+    {% endblock %}
     {% for dato in datos %}
     <div class= "presupuestos">
     <h3>Para {{dato[0]}} cuentas con ${{dato[1]}} pesos</h3>

@@ -50,16 +50,36 @@ def presupuesto():
     dat.append(presupuestos[index])
     datos.append(dat)
     index=index+1
-  print datos
   return render_template('presupuestos.html', presupuestos=presupuestos,datos=datos,usuario='Antonio :D')
+
+@app.route('/presupuestar',methods=['POST','GET'])
+def presupuestar():
+  if request.method == 'POST':
+    categorias = r.lrange('categoria',0,-1)
+    index = 0
+    print categorias
+    for categoria in categorias:
+      print str(index)
+      if categoria == request.form['categorias']:
+        r.lset('presupuestos',index,int(r.lindex('presupuestos',index))+int(request.form['dinero']))
+      index= index+1
+  categorias =r.lrange('categoria',0,-1)
+  presupuestos = r.lrange('presupuestos',0,-1)
+  index =0
+  datos= []
+  for presupuesto in presupuestos:
+    dat=[]
+    dat.append(categorias[index])
+    dat.append(presupuestos[index])
+    datos.append(dat)
+    index=index+1
+  return render_template('presupuestar.html', presupuestos=presupuestos, datos=datos, usuario ='Antonio',categorias=categorias)
 
 
 @app.route('/gastos/<numero>',methods=['POST','GET'])
 def gastos(numero):
   mensaje = None
-  print 'Mensaje es None'
   if request.method== 'POST':
-    print 'Mensaje despues de post'
     gasto = -1
     try:
       gasto= int(request.form['gasto'])

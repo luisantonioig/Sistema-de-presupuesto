@@ -1,0 +1,15 @@
+{% extends "presupuestos.html" %}
+  {% block presupuestar %}
+  <form action= "{{url_for('presupuestar')}}"method="post">
+    <select name="categorias">
+    {% for categoria in categorias%}
+      <option>{{categoria}}</option>
+    {% endfor %}
+    </select>
+    <br>
+    ¿Cuanto vas a agregar para esa categoria?<input type="text" name="dinero">
+    <br>
+    <input type="submit" value="Presupuestar">
+  </form>
+  {% endblock %}
+
