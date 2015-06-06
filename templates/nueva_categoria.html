@@ -4,6 +4,17 @@
 <title>El titulo :D</title>
 <link rel="stylesheet" type="text/css" href="static/tcal.css" >
 <script type="text/javascript" src="static/tcal.js"></script>
+<script language="JavaScript" type="text/javascript">
+  function muestracapa(id)
+  {
+     if(id)
+      document.getElementById('temporizar').style.display = "none";
+
+    else
+      document.getElementById('temporizar').style.display = "inline";
+
+   }
+</script>
 {% endblock %}
 
 {% block encabezado %}
@@ -13,21 +24,30 @@ El encabezado
 {% block body %}
 <h3>¿Que tienes que pagar?</h3>
 <form action"" method= "post">
+  <br>
   Nombre
   <input type"text" name="nombre">
-  <br>Repetir
-  <select name="tipo">
-    <option>Una sola vez</option>
-    <option>Mensual</option>
-    <option>Anual</option>
-    <option>Semanal</option>
-    <option>Diario</option>
-  </select>
-  <br>Empezar el dia
-  <input type="text" name="fecha" class="tcal" value="" />
-  <br>¿Cuanto tienes que pagar por cada vez?
-  <input type="text" name="a_pagar">
-  <input type="submit">
+  <br>
+  Presupuesto inicial
+  <input type"text" name="presupuesto">
+  <br>
+  ¿Cuanto vas a gastar en esta categoria?
+  <input type"text" name="a_gastar">
+  <br>
+  Temporizar
+  <input type = "checkbox" name= "temporizar" checked onclick="muestracapa(this.checked);">
+  <br>
+  <div id="temporizar">
+    De:
+    <input type"text" name="de">
+    <br>
+    A:
+    <input type"text" name="a">
+    <br>
+    Repetir:
+    <input type"text" name="repetir">
+    </div>
+  <input type="submit" value="Agregar categoria">
 </form>
 
 {% endblock %}

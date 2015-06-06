@@ -7,7 +7,20 @@ Tus gastos
 {% endblock %}
 
 {% block gastos %}
+    <div class="tabla">
+    <table>
+      <tr>
+        <td><strong>Categoria</strong></td>
+        <td><strong>Fecha</strong></td>
+        <td><strong>Gasto</strong></td>
+      </tr>
     {% for dato in datos %}
-    <h3>{{dato[1]}}: {{dato[0]}}</h3>
+    <tr>
+    <td>{{dato[1]}}:</td>
+    <td>{{dato[2]}}</td>
+    <td>{{dato[0]}}</td>
+    </tr>
     {% endfor %}
+    </table>
+    </div>
 {% endblock %}

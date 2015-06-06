@@ -13,11 +13,13 @@
   </div>
   <div id="a_mostrar">
     {% for dato in datos %}
-      <div class="reportes">
-      <h3>{{dato[0]}}</h3>
-      <progress value ="{{dato[2]}}" max = "{{dato[1]}}"></progress>
-      <h5>{{dato[3]}}</h5>
-      </div>
+      <a href="facebook.com">
+        <div class="reportes">
+        <h3>{{dato[0]}}</h3>
+        <progress value ="{{dato[2]}}" max = "{{dato[1]}}"></progress>
+        <h5>{{dato[3]}}</h5>
+        </div>
+      </a>
       {% endfor %}
   </div>
   {% endblock %}

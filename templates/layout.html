@@ -1,14 +1,39 @@
+
+
 <!DOCTYPE html>
 <html>
 
   <head>
     {% block titulo %}{% endblock %}
     <link rel="shortcut icon" href="/static/favicon.ico">
-    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='estilo.css') }}">
+    <link rel=stylesheet type=text/css href="{{url_for('static',filename = 'archivo.css')}}">
   </head>
   <body>
-    <div id="agrupar">
-      <header id="cabecera">{% block encabezado %}{% endblock %}</header>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class = "mensaje" style="display:block;">
+          <ul class=flashes>
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+      {% endwith %}
+  <div id="agrupar">
+      <header id="cabecera">
+        <div id = "header">
+           <link rel= stylesheet type=text/css href="{{url_for('static',filename= 'menu.css')}}">
+          Solo texto
+           <ul class="nav">
+            <li><a href="/index">Inicio</a></li>
+            <li><a href="/reporte">Reporte</a>
+            <li><a href="/presupuestar">Presupuestos</a>
+            <li><a href="/gastos/3">gastos</a>
+            <li><a href="/nueva_categoria">Categoria</a>
+          </ul>
+        </div>
+      </header>
       <section id="contenido">{% block body %} {% endblock %}</section>
       <footer id="pie">Esto es el pie de la página</footer>
     </div>

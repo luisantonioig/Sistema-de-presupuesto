@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block encabezado %}
+
+{% endblock %}
+
+{% block body %}
+    <div class="gastos" display="inline-block">
+    <h3>GASTAR</h3>
+  <form action="{{url_for('gastar')}}" method=post>
+    <select name="categorias">
+      {% for categoria in categorias %}
+      <option>{{categoria}}</option>
+      {% endfor %}
+    </select>
+    <br>¿Cuánto gastaste?
+    <input name="gasto" type"text" text="">
+    <br><input type="submit" value="Agregar gasto">
+  </form>
+  {% if mensaje != None %}
+  <h4>
+  {{mensaje}}
+  </h4>
+  {% endif %}
+  </div>
+  <div class="presupuesto" display="inline-block">
+  <h3>PRESUPUESTAR</h3>
+    <form action= "{{url_for('presupuestar')}}"method="post">
+      <select name="categorias">
+      {% for categoria in categorias%}
+        <option>{{categoria}}</option>
+      {% endfor %}
+      </select>
+      <br>
+      ¿Cuanto vas a agregar para esa categoria?<input type="text" name="dinero">
+      <br>
+      <input type="submit" value="Presupuestar">
+    </form>
+  </div>
+  </div>
+
+    
+{% endblock %}
